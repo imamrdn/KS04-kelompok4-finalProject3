@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1059989f-29fc-469e-8ed4-0c2be23587ae",
+		"_postman_id": "5b45900b-9a79-4d5e-a902-d99234d867b5",
 		"name": "final-project-3",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23408279"
 	},
 	"item": [
 		{
@@ -11,9 +12,32 @@
 				{
 					"name": "register",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"imam ramadhan\",\n    \"password\": \"password\",\n    \"gender\": \"male\",\n    \"email\": \"imam@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/users/register/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -32,13 +56,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST3O}}/users/login",
+							"raw": "https://fp3-production.up.railway.app/users/login/",
+							"protocol": "https",
 							"host": [
-								"{{HOST3O}}"
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
 							],
 							"path": [
 								"users",
-								"login"
+								"login",
+								""
 							]
 						}
 					},
@@ -47,35 +76,17 @@
 				{
 					"name": "topup",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "x-access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImVtYWlsIjoiYXN3YXI3OHBwcHBwcEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njg5OTU5ODAsImV4cCI6MTY2ODk5OTU4MH0.X94KhIRBURgKALx0BdDF7KrtKjJ8ERlZrJ1XfBk69fo",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"aswarrr@gmail.com\",\r\n    \"full_name\" : \"mahawarhh\"\r\n}",
+							"raw": "{\n    \"balance\" : 1000000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,16 +94,56 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST3O}}",
+							"raw": "https://fp3-production.up.railway.app/users/topup",
+							"protocol": "https",
 							"host": [
-								"{{HOST3O}}"
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"users",
+								"topup"
 							],
 							"query": [
 								{
 									"key": "x-access-token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImVtYWlsIjoiYXN3YXI3OHBwcHBwcEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njg5OTU5ODAsImV4cCI6MTY2ODk5OTU4MH0.X94KhIRBURgKALx0BdDF7KrtKjJ8ERlZrJ1XfBk69fo",
+									"value": null,
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAyNzksImV4cCI6MTY2OTkxMzg3OX0.C4W0B0Cj-3RsygAxyAc67i53NkIrzwu2UQ45fqfWeEQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/users/22",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"users",
+								"22"
 							]
 						}
 					},
@@ -104,38 +155,132 @@
 			"name": "kategori",
 			"item": [
 				{
-					"name": "create",
+					"name": "get all",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/categories/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "get all",
+					"name": "create",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\" : \"Makanan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/categories/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "delete",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/categories/12",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"categories",
+								"12"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\" : \"Pakaian\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/categories/12",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"categories",
+								"12"
+							]
+						}
 					},
 					"response": []
 				}
@@ -147,9 +292,28 @@
 				{
 					"name": "create",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/products/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -157,35 +321,120 @@
 					"name": "get all",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/products/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "updateAll",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/products/1",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update by id",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/products/1",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "delete",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/products/1",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -198,18 +447,65 @@
 				{
 					"name": "create",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": null
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\":1,\n    \"quantity\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/transactions/",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"transactions",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "get all transasi user",
+					"name": "get all transaction user",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/transactions/user",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"transactions",
+								"user"
+							]
+						}
 					},
 					"response": []
 				},
@@ -217,17 +513,62 @@
 					"name": "admin",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/transactions/admin",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"transactions",
+								"admin"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY5OTEyNDM4LCJleHAiOjE2Njk5MTYwMzh9.NYzZ1Umivblbq1zLKcKvl01xSnR4XmlofYF1zmLyJPI",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "transactions id",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMsImVtYWlsIjoiaW1hbUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2Njk5MTAzNjIsImV4cCI6MTY2OTkxMzk2Mn0.EFm3NR8CQ9XzCmJSfUDYDgzNF-YA0Q8vSTOik5OJXyQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://fp3-production.up.railway.app/transactions/1",
+							"protocol": "https",
+							"host": [
+								"fp3-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"transactions",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
