@@ -1,4 +1,4 @@
-const {verify} = require('../helpers/Jwt')
+const {verify} = require('../Helpers/Jwt')
 const Models = require('../models/index')
 
 async function authenticationMiddleware (req, res, next){
@@ -12,7 +12,7 @@ async function authenticationMiddleware (req, res, next){
     if(!User) return res.status(403).json({
       message : "Token is not valid!"
     })
-    req.user = {id}
+    req.user = {id, email}
     next()
    } catch (err) {
     return res.status(500).json(`${err.message}. Please try again`)

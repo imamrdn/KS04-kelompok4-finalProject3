@@ -40,7 +40,7 @@ class CategoryController {
         try {
             const {categoriesId} = req.params
             const {type} = req.body
-            const updateCategory = await Models.Category.update({type : type}, {where : {id : categoriesId}})
+            await Models.Category.update({type : type}, {where : {id : categoriesId}})
             const Category = await Models.Category.findOne({where  : {id : categoriesId}, attributes : ['id', 'type', 'updatedAt', 'createdAt', 'sold_product_amount']})
             return res.status(201).json({
                 category : Category
