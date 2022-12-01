@@ -18,7 +18,7 @@
     "username": "nafaygijreuszo",
     "password": "8d4728f47eeda6b1eb26de0127607b95ce04e151adb19af0e29e51b90d9a6b17",
     "database": "d566dcnr44qbap",
-    "host": "ec2-35-170-21-76.compute-1.amazonaws.com",
+    "host": "https://tame-haddock.cyclic.app/",
     "dialect": "postgres"
   }
 }
