@@ -3,14 +3,14 @@
     "username": "postgres",
     "password": "12345678",
     "database": "database_development_3",
-    "host": "https://tame-haddock.cyclic.app/",
+    "host": "https://tame-haddock.cyclic.app",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "12345678",
     "database": "database_test_2",
-    "host": "https://tame-haddock.cyclic.app/",
+    "host": "https://tame-haddock.cyclic.app",
     "dialect": "postgres"
   },
   "production": {
