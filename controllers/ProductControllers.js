@@ -68,7 +68,6 @@ class ProductController {
             })
            await Models.Product.update({CategoryId : CategoryId}, {where : {id : productId}})
            let Product = await Models.Product.findOne({where : {id : productId}})
-           console.log(Product)
            Product.price = `Rp. ${Product.price}`
              return res.status(200).json({
                 product : Product

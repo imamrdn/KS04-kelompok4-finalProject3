@@ -14,11 +14,15 @@
     "dialect": "postgres"
   },
   "production": {
-    "ssl": true,
-    "username": "nafaygijreuszo",
-    "password": "8d4728f47eeda6b1eb26de0127607b95ce04e151adb19af0e29e51b90d9a6b17",
-    "database": "d566dcnr44qbap",
-    "host": "https://tame-haddock.cyclic.app/",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "ssl" : true,
+    "dialect" : "postgres",
+    "protocol" : "postgres",
+    "dialectOptions" : {
+      "ssl" : {
+        "require" : true,
+        "rejectUnauthorized" : false
+      }
+    }
   }
 }

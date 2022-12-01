@@ -1,4 +1,5 @@
 // import Helpers
+const { where } = require('sequelize')
 const {hash, compare}= require('../Helpers/Hash')
 const {sign} = require('../Helpers/Jwt')
 // import Model
@@ -8,12 +9,13 @@ class UserControllers {
     static async Register(req, res){
         try {
             let {email, full_name, password, gender} = req.body
-            const verifyemailUser = await Models.User.findOne({where : {email : req.body.email}})
+            email = email.toLowerCase()
+            const verifyemailUser = await Models.User.findOne({where : {email : email}})
             if(verifyemailUser) return res.status(400).json({
                 message : "Email Already Registered"
             })
             req.body.password = hash(req.body.password)
-            const createUser = await Models.User.create({email, full_name, password : hash(password), gender, role : 'customer', balance : 0})
+            const createUser = await Models.User.create({email : email, full_name, password : hash(password), gender, role : 'customer', balance : 0})
             let User = await Models.User.findOne({where : {id : createUser.id}, attributes : ['id', 'full_name', 'email', 'gender', 'balance', 'createdAt']})
             User.balance = `Rp.${User.balance}`
             return res.status(201).json({
@@ -29,7 +31,9 @@ class UserControllers {
 
     static async Login(req, res) {
         try {
-            const verifyemailUser = await Models.User.findOne({where : {email : req.body.email}, attributes: ["id", "email", "password", "role"]})
+            let {email, password} = req.body
+            email = email.toLowerCase()
+            const verifyemailUser = await Models.User.findOne({where : {email : email}, attributes: ["id", "email", "password", "role"]})
             if(!verifyemailUser || !compare(req.body.password, verifyemailUser.password)) return res.status(400).json({
                 message : "Email Not Registered Or Password Wrong!"
             })
@@ -48,10 +52,14 @@ class UserControllers {
     static async Update(req, res) {
         const {id} = req.user
         try {
+            const dataNewuser = req.body
             const {userId} = req.params
+            let whereclause = {}
+            if(dataNewuser.email) whereclause.email = dataNewuser.email
+            if(dataNewuser.full_name) whereclause.full_name = dataNewuser.full_name
             if(id != userId) return res.status(400).json({message :  "Tidak Punya Akses"})
-            await Models.User.update(req.body, {where : {id : id}})
-            const User = await Models.User.findOne({where : {id :id}, exclude: ['password', 'balance', 'role'] })
+            await Models.User.update(whereclause, {where : {id : id}})
+            const {User} = await Models.User.findOne({where : {id :id},  attributes : ['id','email', 'full_name', 'createdAt', 'updatedAt']})
             return res.status(201).json({
                 User : User
             })
@@ -81,7 +89,7 @@ class UserControllers {
     }
 
     static async topUp(req, res) {
-        const id = 11
+        const {id} = req.user
         try {
             let {balance} = req.body
             const getBalanceAfterUpdate = await Models.User.findByPk(id)

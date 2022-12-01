@@ -3,7 +3,7 @@ const Models = require('../models/index')
 
 class TransactionHistoryController {
    static async Create(req, res) {
-      const id = 11
+       const {id} = req.user
      try {
         const {productId, quantity} = req.body
         //validasi product tersedia atau tidak
@@ -46,7 +46,7 @@ class TransactionHistoryController {
    }
 
    static async getTransactionUser(req, res) {
-      const id = 11
+       const {id} = req.user
       try{
          let transactionHistoryUser = await Models.TransactionHistory.findAll({where : {UserId  : id}, attributes : {exclude :
          ['id']}, include : [
@@ -84,7 +84,7 @@ class TransactionHistoryController {
             }
          ]})
          for(let i = 0; i<allTransactionHistoryUser.length;i++){
-            allTransactionHistoryUser[i].total_price = `Rp. ${allTransactionHistoryUser.total_price}`
+             allTransactionHistoryUser[i].total_price = `Rp. ${allTransactionHistoryUser[i].total_price}`
             allTransactionHistoryUser[i].Product.price = `Rp. ${allTransactionHistoryUser[i].Product.price}`
          }
          return res.status(200).json({
@@ -99,7 +99,6 @@ class TransactionHistoryController {
    }
 
    static async getTransactionById(req,res) {
-      const {id} = 11
       try{
          const {transactionId} = req.params
          let transactionHistoryById = await Models.TransactionHistory.findOne({where : {id : transactionId}, attributes : {exclude :
@@ -111,6 +110,10 @@ class TransactionHistoryController {
                }
             }
          ]})
+         console.log(transactionHistoryById)
+         if(!transactionHistoryById) return res.status(404).json({
+         message : "Transaksi tidak di temukan"
+        })
          transactionHistoryById.total_price = `Rp. ${transactionHistoryById.total_price}`
          transactionHistoryById.Product.price = `Rp. ${transactionHistoryById.Product.price}`
          return res.status(200).json(transactionHistoryById)
